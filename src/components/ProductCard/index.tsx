@@ -7,6 +7,9 @@ import {
     Typography
 } from "@material-tailwind/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
+import { formatCurrency } from "@/utils/helper";
 
 interface IProps {
     title: string
@@ -14,19 +17,13 @@ interface IProps {
     thumbnail: string
     price: number
     discount: number
+    productId: string
 }
 
 const ProductCard = (props: IProps) => {
-    const { title, description, thumbnail, price, discount } = props;
+    const { productId, title, description, thumbnail, price, discount } = props;
 
-    const formatCurrency = (value: number) => {
-        return new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-            currency: 'BRL' 
-        }).format(value);
-    }
+    const router = useRouter();
 
     return (
         <Card className="mt-6 w-full h-[400px]">
@@ -71,7 +68,9 @@ const ProductCard = (props: IProps) => {
                 </div>
             </CardBody>
             <CardFooter className="pt-0">
-                <Button>See More</Button>
+                <Button onClick={() => router.push(`/products/${productId}`)}>
+                    See More
+                </Button>
             </CardFooter>
         </Card>
     )

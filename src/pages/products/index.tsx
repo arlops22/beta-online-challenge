@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps, InferGetStaticPropsType } from 'next';
 import { Button, IconButton, Typography } from '@material-tailwind/react';
 import ReactPaginate from 'react-paginate';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/16/solid';
@@ -10,13 +10,13 @@ import { IProduct } from '@/types';
 import ProductCard from '@/components/ProductCard';
 import SearchBar from '@/components/SearchBar';
 
-export const getServerSideProps = (async () => {
+export const getStaticProps = (async () => {
   const data = await getAllProducts();
   return { props: { data } }
 }) satisfies GetServerSideProps<{data: IProductData}>
 
 
-export default function Products(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Products(props: InferGetStaticPropsType<typeof getStaticProps>) {
     const { data } = props;
     
     const [search, setSearch] = useState('');
