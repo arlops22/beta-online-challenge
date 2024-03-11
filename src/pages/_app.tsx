@@ -11,14 +11,10 @@ import SideBar from '@/components/Sidebar';
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <main className={inter.className}>
-            <div className="flex items-center">
-                <div className="w-1/4">
-                    <SideBar />
-                </div>
-                <div className="w-3/4">
-                    <div className="px-10 bg-blue-gray-50 min-h-screen">
-                        <Component {...pageProps} />
-                    </div>
+            <SideBar />
+            <div className="w-[calc(100vw_-_288px)] ml-auto">
+                <div className="px-10 bg-blue-gray-50 min-h-screen">
+                    <Component {...pageProps} />
                 </div>
             </div>
         </main>

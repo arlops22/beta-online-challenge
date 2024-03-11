@@ -1,13 +1,17 @@
-import { api } from "../base"
-import { QUERY_KEYS } from "../queryKeys"
+import { IProduct, IResponseData } from "@/types";
+import { api } from "../base";
+import { QUERY_KEYS } from "../queryKeys";
 
-const getAllProducts = async () => {
+export interface IProductData extends IResponseData {
+    products: IProduct[]
+}
+
+const getAllProducts = async (): Promise<IProductData> => {
     try {
-        const response = await api.get(QUERY_KEYS.PRODUCTS);
-        
+        const response = await api.get(`${QUERY_KEYS.PRODUCTS}?limit=100`);
         return response.data;
-    } catch (err) {
-        console.log('err', err)
+    } catch (err: any) {
+        throw new Error(err);
     }
 }
 

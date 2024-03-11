@@ -1,0 +1,19 @@
+export interface IResponseData {
+    limit: number
+    skip: number
+    total: number
+}
+
+export interface IProduct {
+    id: string,
+    title: string
+    description: string
+    price: number
+    discountPercentage: number
+    rating: number
+    stock: number
+    brand: string
+    category: string
+    thumbnail: string
+    images: string[]
+}

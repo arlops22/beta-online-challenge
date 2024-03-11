@@ -12,7 +12,7 @@ const SideBar = () => {
     const router = useRouter();
 
     return (
-        <Card className="h-screen w-full p-4 shadow-xl shadow-blue-gray-900/5">
+        <Card className="fixed h-screen w-72 p-4 shadow-xl shadow-blue-gray-900/5">
             <div className="mb-2 p-4">
                 <Typography 
                     variant="h5" 
